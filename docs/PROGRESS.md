@@ -54,6 +54,7 @@
 | 2026-11-01 | S1 完成 | 用户实现构造函数与 `rows/cols/size`；构建输出 `ERROR: TODO(S2): implement at(i, j)` |
 | 2026-11-02 | S2 完成 | 用户实现 `at()`（const/非 const）与 `data()`；构建输出 `PASS: tensor`；审查发现缺少 0 维参数校验、错误信息过短，待收尾 |
 | 2026-11-02 | S3 完成 | 用户修正 `ops.cpp`；AI 写 `tests/test_ops.cpp`；构建输出 `PASS: ops`；代码已本地提交 |
+| 2026-11-02 | 路径清理 | `scripts/build.ps1` 去掉硬编码编译器路径，改为只认 PATH 或 `-Compiler`；README/PLAN/NEXT_SESSION/PROGRESS 中的本地绝对路径改为通用描述；公开 Git 历史压缩为一个初始提交，旧提交已从远端移除并本地清理 |
 | 2026-11-02 | 隐私清理 | 个人背景移到本地 `docs/private/`；删除公开会话记录；重写公开 Git 历史，旧个人记录不再出现在远端分支 |
 | 2026-11-02 | 验证新编译器 | 本机 GCC 16.2.0（MinGW-W64 UCRT, x86_64）编译并运行 `test_tensor`、`test_ops` 均 PASS；构建脚本改为优先使用 PATH 中的 g++ |
 | 2026-11-02 | 今日结束 | 完成 S0～S3；下次从 S4 matmul 继续；详见 `docs/NEXT_SESSION.md` |
