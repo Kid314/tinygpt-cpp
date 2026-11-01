@@ -1,0 +1,15 @@
+build/
+*.exe
+*.o
+*.obj
+*.lib
+*.dll
+*.so
+*.dylib
+__pycache__/
+.venv/
+
+# Local private notes / old material (never pushed)
+/docs/private/
+/docs/sessions/
+/.local/
