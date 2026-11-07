@@ -8,7 +8,7 @@
 2. 查 `git status`，并跑基线：
    - `powershell -ExecutionPolicy Bypass -File scripts/build.ps1`
    - `powershell -ExecutionPolicy Bypass -File scripts/build.ps1 -Test tests/test_ops.cpp`
-3. 从 `docs/PROGRESS.md` 的“当前步骤/下一步”确定今天的小步（当前是 **S4 matmul**）。
+3. 从 `docs/PROGRESS.md` 的“当前步骤/下一步”确定今天的小步，以最新追加记录为准。
 4. 先向用户简短报告：上次做到哪、今天做哪一步、验收是什么；然后按教学流程走：
    先手算例子 → 用户自己写实现 → AI 写测试 → 跑通 → 更新 `docs/PROGRESS.md` 与 session。
 5. 一次只做一个 30 分钟小步；不要替用户写实现，不要顺手做后面的步骤。

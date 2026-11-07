@@ -8,7 +8,7 @@
 继续学习
 ```
 
-AI 会按根目录 `AGENTS.md` 的“触发词：继续学习”自动读文档、跑基线、接上当前步骤（S4 matmul）。
+AI 会按根目录 `AGENTS.md` 的“触发词：继续学习”自动读文档、跑基线、接上当前步骤（S5 benchmark）。进度以 `docs/PROGRESS.md` 最新追加记录为准。
 
 下面第一节的长提示是给“读不了本地文件”的网页版 AI 用的，能读目录时不需要。
 
@@ -30,20 +30,22 @@ AI 会按根目录 `AGENTS.md` 的“触发词：继续学习”自动读文档�
 - 不要修改 docs/GOAL.md 和 docs/PLAN.md 里的范围，除非我明确同意。
 - 本版本不做教学网页。
 
-当前进度：S0～S3 已完成（Tensor 与 add），下一步 S4 matmul。
+当前进度：S0～S4 已完成（Tensor、add 与 i-j-k matmul），下一步 S5 benchmark。
 
 请先运行基线确认环境：
 powershell -ExecutionPolicy Bypass -File scripts/build.ps1
 powershell -ExecutionPolicy Bypass -File scripts/build.ps1 -Test tests/test_ops.cpp
 
-然后给我 S4 的目标、手算例子和验收标准；先不要直接给实现代码，我会自己写。
+然后给我 S5 的目标、计时方法和 GFLOPS 计算例子；先不要直接给 benchmark 实现代码，我会自己写。只测现有 i-j-k matmul，不提前改循环顺序。
 ```
 
-## 二、当前状态（2026-11-02）
+## 二、当前状态（2026-11-07）
 
-- 已完成：S0 环境、S1 Tensor 形状、S2 Tensor 访问、S3 逐元素 add。
-- 下一步：S4 matmul（先 i-j-k 三重循环）。
-- 代码已推送到 GitHub（`main`）；个人背景只在本机 `docs/private/`。
+- 已完成：S0 环境、S1 Tensor 形状、S2 Tensor 访问、S3 逐元素 add、S4 i-j-k matmul。
+- S4 实际验收：`PASS: tensor`、`PASS: matmul (7 cases)`、`PASS: ops`，两条构建命令退出码均为 0，无编译警告。
+- 下一步：S5 benchmark，由用户编写 `bench/bench_matmul.cpp`，测量 64/256 方阵耗时与 GFLOPS，记录机器、尺寸和真实结果。
+- 本轮尚未运行 benchmark；S6 循环顺序优化留到后续步骤。
+- 仓库分支为 `main`；个人背景只在本机 `docs/private/`。
 - 本地文档：`docs/PROGRESS.md` 是唯一进度来源；`docs/PLAN.md` 是任务表。
 
 ## 三、AI 能不能读本地文件
@@ -60,7 +62,7 @@ powershell -ExecutionPolicy Bypass -File scripts/build.ps1 -Test tests/test_ops.
 1. 打开终端，进入项目根目录。
 2. 跑一次 `git status`，确认没有奇怪的未提交改动。
 3. 跑基线测试（见上）。
-4. 新对话粘贴启动提示，或直接说“读 docs/PROGRESS.md，从 S4 开始”。
+4. 新对话粘贴启动提示，或直接说“继续学习”；当前下一步是 S5。
 5. 学完后让 AI 更新 `docs/PROGRESS.md` 和本地私有 session。
 
 ## 五、不要把本地资料弄丢
